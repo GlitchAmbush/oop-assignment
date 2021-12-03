@@ -12,17 +12,22 @@ namespace oopAssignment
         private oopAssignment.Booking[] blist;
         private int numCustomer;
         private int numBookings;
+        private int numFlight;
         private int maxBookings;
         private int maxCustomer;
+        private int maxFlights;
 
         public Manager()
         {
             numCustomer = 0;
             numBookings = 0;
+            numFlight = 0;
             maxCustomer = 100;
             maxBookings = 99999;
+            maxFlights = 99999;
             clist = new Customer[maxCustomer];
             blist = new Booking[maxBookings];
+            flist = new Flight[maxFlights];
         }
 
         public bool addCustomer(string fnam, string lName, long phone)
