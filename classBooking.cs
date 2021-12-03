@@ -7,17 +7,19 @@ namespace oopAssignment
 {
     class Booking
     {
-        private string date;
-        private int bookingID;
-        public Booking(string date, int bookingID)
+          private DateTime date { get; }
+        private int bookingID { get; }
+        private Customer c { get; }
+        private Flight f { get; }
+        public Booking(DateTime date, int bookingID, int flightID, Customer customer, Flight flight)
         {
-            Random Rand = new Random();
             this.date = date;
-            bookingID = Rand.Next(10000, 99999);
+            this.bookingID = bookingID;
+            c = customer;
+            f = flight;
+            
         }
-        public string getDate(String date){
-            return date;
-        }
+        
         public string toString() {
             string s = "Booking";
             s += "\nBooking id :" + bookingID;
