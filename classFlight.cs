@@ -69,12 +69,12 @@ namespace oopAssignment
 
         public string toString()
         {
-            string s = "Flight Number: " + flightNumber;
+            string s = "\nFlight Number: " + flightNumber;
             s = s + "\nOrigin: " + origin;
             s = s + "\nDestination:" + destination;
             s = s + "\nNumber of Passengers:" + numPassengers;
             s = s + "\nAvailable seats:" + (maxSeats - numPassengers);
-            s = s + getPassengerList();
+            s = s + getPassengerList() + "\n";
             return s;
         }
     }

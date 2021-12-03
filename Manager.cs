@@ -75,6 +75,17 @@ namespace oopAssignment
             return true;
         }
 
+        public bool addFlight(int fn, string or, string dest, int mSeats)
+        {
+            if (numFlight < maxFlights)
+            {
+                flist[numFlight] = new Flight(fn, or, dest, mSeats);
+                numFlight++;
+                return true;
+            }
+            return false;
+        }
+
         public string listAllFlights()
         {
             string s = "=== Flight List ===\n";
