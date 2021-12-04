@@ -34,6 +34,11 @@ namespace oopAssignment
         {
             if (numCustomer < maxCustomer)
             {
+                for (int i = 0; i < numCustomer; i++)
+                {
+                    if (clist[i].getFirstName() == fName && clist[i].getLastName() == lName && clist[i].getPhoneNumber() == phone);
+                    return false; 
+                }
                 Random rnd = new Random();
                 int id = rnd.Next(10000, 99999);
                 clist[numCustomer] = new Customer(id, fnam, lName, phone);
@@ -50,7 +55,7 @@ namespace oopAssignment
             {
                 if (clist[i].GetType() == typeof(Customer))
                 {
-                    s += ((Customer)clist[i]).ToString() + "\n";
+                    s += clist[i].ToString() + "\n";
                 }
             }
             return s;

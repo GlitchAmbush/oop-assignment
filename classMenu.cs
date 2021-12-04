@@ -74,14 +74,36 @@ namespace oopAssignment
                         Console.Clear();
                         string fName;
                         string lName;
-                        long phone;
+                        string phone;
+                        long phoneNum;
                         Console.WriteLine("Adding new customer...\nPlease enter the following:");
                         Console.Write("First Name: ");
                         fName = Console.ReadLine();
+                        while (String.IsNullOrEmpty(fName))
+                        {
+                            Console.Write(" Name cannot be empty.\n Please try again: ");
+                            fName = Console.ReadLine();
+                        }
                         Console.Write("Last Name: ");
                         lName = Console.ReadLine();
+                        while (String.IsNullOrEmpty(lName))
+                        {
+                            Console.Write(" Name cannot be empty.\n Please try again: ");
+                            lName = Console.ReadLine();
+                        }
                         Console.Write("Phone Number (no dashes or spaces): ");
-                        phone = Convert.ToInt64(Console.ReadLine());
+                        phone = Console.ReadLine();
+                        while (!Int64.TryParse(phone, out phoneNum))
+                        {
+                            Console.Write("Not a valid phone number, please try again: ");
+                            phone = Console.ReadLine();
+                        }
+
+                        if (m.addCustomer(fName, lName, phoneNum) == false)
+                            Console.WriteLine("\nCustomer already exists.\nPlease try again.");
+                        else
+                            Console.WriteLine("\nCustomer successfully added!");
+
                         m.addCustomer(fName, lName, phone);
                         Console.WriteLine("\nPress any key to go back to the Customer Menu...");
                         Console.ReadKey();
@@ -96,11 +118,17 @@ namespace oopAssignment
                         break;
                     case 3: // Delete Customer
                         Console.Clear();
-                        int delete;
+                        string delete;
+                        int d;
                         Console.WriteLine(m.listAllCustomers());
                         Console.WriteLine("Removing a customer...");
                         Console.Write("\nEnter a Customer ID to delete: ");
-                        delete = Convert.ToInt32(Console.ReadLine());
+                        delete = Console.ReadLine();
+                        while (!int.TryParse(delete, out d))
+                        {
+                            Console.Write("Not a valid ID, please try again: ");
+                            phone = Console.ReadLine();
+                        }
                         
                         if (m.deleteCustomer(delete) == true)
                             Console.WriteLine("\nSuccessfully Deleted.");
@@ -146,19 +174,41 @@ namespace oopAssignment
                 {
                     case 1: // Add Flight
                         Console.Clear();
-                        int flightNum;
+                        string flightNum;
+                        int fn;
                         string origin;
                         string destination;
-                        int numSeats;
+                        string numSeats;
+                        int ns;
                         Console.WriteLine("Adding new flight...\nPlease enter the following:");
                         Console.Write("Flight Number: ");
-                        flightNum = Convert.ToInt32(Console.ReadLine());
+                        flightNum = Console.ReadLine();
+                        while (!int.TryParse(flightNum, out fn))
+                        {
+                            Console.Write("Not a valid input, please try again: ");
+                            flightNum = Console.ReadLine();
+                        }
                         Console.Write("Flight Origin: ");
                         origin = Console.ReadLine();
+                        while (String.IsNullOrEmpty(origin))
+                        {
+                            Console.Write(" Field cannot be empty.\n Please try again: ");
+                            origin = Console.ReadLine();
+                        }
                         Console.Write("Flight Destination: ");
                         destination = Console.ReadLine();
+                        while (String.IsNullOrEmpty(destination))
+                        {
+                            Console.Write(" Field cannot be empty.\n Please try again: ");
+                            destination = Console.ReadLine();
+                        }
                         Console.Write("Number of Seats: ");
-                        numSeats = Convert.ToInt32(Console.ReadLine());
+                        numSeats = Console.ReadLine();
+                        while (!int.TryParse(numSeats, out ns))
+                        {
+                            Console.Write("Not a input, please try again: ");
+                            numSeats = Console.ReadLine();
+                        }
                         m.addFlight(flightNum, origin, destination, numSeats);
                         Console.WriteLine("\nPress any key to go back to the Flight Menu...");
                         Console.ReadKey();
@@ -173,20 +223,32 @@ namespace oopAssignment
                     case 3: // View Specific Flight
                         Console.Clear();
                         int fNum;
+                        string fnString;
                         Console.Write("Finding Specific Flight...\nPlease enter Flight Number: ");
-                        fNum = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine(m.findSpecificFlight(fNum));
+                        fnString = Console.ReadLine();
+                        while (!int.TryParse(fnString, out fNum))
+                        {
+                            Console.Write("Not a valid flight number, please try again: ");
+                            fnString = Console.ReadLine();
+                        }
                         Console.WriteLine("\nPress any key to go back to the Flight Menu...");
                         Console.ReadKey();
                         flightMenu();
                         break;
                     case 4: // Delete Flight
                         Console.Clear();
-                        int delete;
+                        int d;
+                        string delete;
                         Console.WriteLine(m.listAllFlights());
                         Console.WriteLine("Removing a flight...");
                         Console.Write("\nEnter a Flight ID to delete: ");
                         delete = Convert.ToInt32(Console.ReadLine());
+
+                        while (!int.TryParse(delete, out d))
+                        {
+                            Console.Write("Not a valid flight ID, please try again: ");
+                            delete = Console.ReadLine();
+                        }
 
                         if (m.CheckExistFlight(delete) == true)
                         {
