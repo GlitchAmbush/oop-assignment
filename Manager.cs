@@ -155,5 +155,18 @@ namespace oopAssignment
             }
             return false;
         }
+
+        public string listAllBookings()
+        {
+            string s = "=== Booking List ===\n";
+            for (int i = 0; i < numBookings; i++)
+            {
+                if (blist[i].GetType() == typeof(Booking))
+                {
+                    s += blist[i].toString() + "\n";
+                }
+            }
+            return s;
+        }
     }
 }
