@@ -297,9 +297,20 @@ namespace oopAssignment
                 {
                     case 1:
                         // add booking function
+                        int c;
+                        int f;
+                        Console.WriteLine(m.listAllCustomers());
+                        Console.WriteLine(m.listAllFlights());
+                        Console.WriteLine("Enter customer id");
+                        c = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter flight id");
+                        f = Convert.ToInt32(Console.ReadLine());
+                        m.addBooking(c,f);
+                        Console.WriteLine(m.listAllBookings());
                         break;
                     case 2:
                         // view booking function
+                        Console.WriteLine(m.listAllBookings());
                         break;
                     case 3:
                         mainMenu();
