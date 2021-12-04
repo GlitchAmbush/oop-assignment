@@ -104,7 +104,7 @@ namespace oopAssignment
                         else
                             Console.WriteLine("\nCustomer successfully added!");
 
-                        m.addCustomer(fName, lName, phone);
+                        m.addCustomer(fName, lName, phoneNum);
                         Console.WriteLine("\nPress any key to go back to the Customer Menu...");
                         Console.ReadKey();
                         customerMenu();
@@ -130,7 +130,7 @@ namespace oopAssignment
                             phone = Console.ReadLine();
                         }
                         
-                        if (m.deleteCustomer(delete) == true)
+                        if (m.deleteCustomer(d) == true)
                             Console.WriteLine("\nSuccessfully Deleted.");
                         else 
                             Console.WriteLine("\nNo customer found.");
@@ -209,7 +209,7 @@ namespace oopAssignment
                             Console.Write("Not a input, please try again: ");
                             numSeats = Console.ReadLine();
                         }
-                        m.addFlight(flightNum, origin, destination, numSeats);
+                        m.addFlight(fn, origin, destination, ns);
                         Console.WriteLine("\nPress any key to go back to the Flight Menu...");
                         Console.ReadKey();
                         flightMenu();
@@ -250,9 +250,9 @@ namespace oopAssignment
                             delete = Console.ReadLine();
                         }
 
-                        if (m.CheckExistFlight(delete) == true)
+                        if (m.CheckExistFlight(d) == true)
                         {
-                            if (m.deleteFlight(delete) == true)
+                            if (m.deleteFlight(d) == true)
                                 Console.WriteLine("\nSuccessfully deleted");
                             else
                                 Console.WriteLine("\nThis flight has passengers. Remove passengers first.");
